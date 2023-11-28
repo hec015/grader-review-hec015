@@ -30,7 +30,9 @@ if [[ $? -eq 0 ]]
         echo "Files compiled successfully"
     else
         echo "Compile error"
-         echo 'Score: 0/4'
+        echo ""
+        echo 'Score: 0/4'
+        echo ""
         exit 1
 fi
 
@@ -43,7 +45,9 @@ FAILURES=`grep -c FAILURES!!! junit-output.txt`
 if [[ $FAILURES -eq 0 ]]
     then
         echo 'All tests passed'
+        echo ""
         echo 'Score: 4/4'
+        echo ""
     else
         RESULT_LINE=`grep "Tests run:" junit-output.txt`
         COUNT=${RESULT_LINE:25:1}
@@ -51,10 +55,9 @@ if [[ $FAILURES -eq 0 ]]
         echo "JUnit output was:"
         cat junit-output.txt
         echo ""
-        echo "--------------"
-        echo "| Score: $COUNT/4 |"
-        echo "--------------"
+        echo "Score: $COUNT/4"
         echo ""
+
 
 fi
 
