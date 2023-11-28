@@ -13,7 +13,9 @@ echo 'Finished cloning'
 if [[ ! -f student-submission/ListExamples.java ]] 
     then 
         echo "Error: Make sure your file is ListExamples.java"
-        echo '0/4'
+        echo ""
+        echo '0/8'
+        echo "" 
         exit 1
     else 
     echo "ListExamples.java found"
@@ -31,7 +33,7 @@ if [[ $? -eq 0 ]]
     else
         echo "Compile error"
         echo ""
-        echo 'Score: 0/4'
+        echo 'Score: 0/8'
         echo ""
         exit 1
 fi
@@ -40,22 +42,22 @@ fi
 java -cp $CPATH org.junit.runner.JUnitCore TestListExamples > junit-output.txt
 
 
-# Tests run: 4,  Failures: 2
+# Tests run: _,  Failures: _
 FAILURES=`grep -c FAILURES!!! junit-output.txt`
 if [[ $FAILURES -eq 0 ]]
     then
         echo 'All tests passed'
         echo ""
-        echo 'Score: 4/4'
+        echo 'Score: 8/8'
         echo ""
     else
         RESULT_LINE=`grep "Tests run:" junit-output.txt`
-        COUNT=${RESULT_LINE:25:1}
+        COUNT=${RESULT_LINE:25}
 
         echo "JUnit output was:"
         cat junit-output.txt
         echo ""
-        echo "Score: $COUNT/4"
+        echo "Score: $COUNT/8"
         echo ""
 
 
